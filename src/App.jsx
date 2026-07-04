@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Home from './pages/Home'
 import Team from './pages/Team'
+import Projects from './pages/Projects'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -43,6 +44,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<Team />} />
+        <Route path="/projects" element={<Projects />} />
       </Routes>
       <Footer />
     </>

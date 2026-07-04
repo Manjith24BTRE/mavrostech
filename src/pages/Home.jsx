@@ -4,6 +4,7 @@ import VentureStack from '../components/VentureStack';
 import ImpactGrid from '../components/ImpactGrid';
 import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import Process from '../components/Process';
+import CaseStudiesPreview from '../components/CaseStudiesPreview';
 
 export default function Home() {
   const topRef = useRef(null);
@@ -189,6 +190,8 @@ export default function Home() {
         </div>
       </section>
 
+      <CaseStudiesPreview />
+
       <section className="section-pad" id="impact">
         <div className="wrap">
           <div className="section-label">IMPACT</div>
@@ -206,7 +209,7 @@ export default function Home() {
             <div className="eyebrow" style={{ justifyContent: 'center' }}>LET'S BUILD SOMETHING</div>
             <h2>Got footage that needs a story?</h2>
             <p>Tell us what you're shooting and how much of it there is. We'll show you what MAVROS does with it.</p>
-            <a href="mailto:hello@mavros.ai?subject=MAVROS%20enquiry&body=Hi%20MAVROS%20team%2C%0A%0AI%27d%20like%20to%20discuss..." className="btn btn-primary">Email MAVROS</a>
+            <a href="mailto:official@mavrostech.in?subject=MAVROS%20enquiry&body=Hi%20MAVROS%20team%2C%0A%0AI%27d%20like%20to%20discuss..." className="btn btn-primary">Email MAVROS</a>
           </div>
         </div>
       </section>

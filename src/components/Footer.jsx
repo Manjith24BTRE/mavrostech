@@ -19,7 +19,7 @@ export default function Footer() {
                 </div>
                 <div className="col">
                     <div className="col-h">Contact</div>
-                    <a href="mailto:hello@mavros.ai">hello@mavros.ai</a>
+                    <a href="mailto:official@mavrostech.in">official@mavrostech.in</a>
                     <p>Remote-first team</p>
                 </div>
             </div>

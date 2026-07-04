@@ -2,18 +2,6 @@ import { useRef, useState } from 'react';
 
 const teamMembers = [
   {
-    name: "Rudrik Himanshu Joshi",
-    role: "Founder and CMO",
-    imageSrc: "/assets/team_rudrik.png",
-    about: "Hi, I'm Rudrik Hemanshu Joshi—a technology enthusiast passionate about AI, innovation, and building impactful digital solutions. I enjoy turning ideas into reality, solving complex problems, and continuously learning to create meaningful change.",
-    skills: ["Backend Development", "Database Management", "Artificial Intelligence (AI)", "Team Leadership", "Entrepreneurship"],
-    email: "rudrik28novjoshi@gmail.com",
-    instagram: "Rudrikhemanshujoshi",
-    instagramUrl: "https://www.instagram.com/rudrikhemanshujoshi?igsh=MTJqbXptZjkweHhjbQ==",
-    linkedin: "Rudrik Hemanshu Joshi",
-    linkedinUrl: "https://www.linkedin.com/in/rudrik-hemanshu-joshi-0a592b261?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-  },
-  {
     name: "Manjith Singh",
     role: "Co-founder and CEO",
     imageSrc: "/assets/team_manjith.png",
@@ -146,7 +134,7 @@ function TeamCard({ member, onClick, index, currentIndex, total }) {
 }
 
 export default function Team() {
-  const [currentIndex, setCurrentIndex] = useState(0); // Start with Rudrik (index 0)
+  const [currentIndex, setCurrentIndex] = useState(0); // Start with Manjith (index 0)
   const [selectedMember, setSelectedMember] = useState(null);
 
   const handlePrev = () => {
@@ -230,7 +218,7 @@ export default function Team() {
             <span className="c-corner br"></span>
             <h2>Let's build together.</h2>
             <p className="lead">Interested in exploring our pipeline products, testing pre-releases, or collaborating on custom AI development? Let's connect.</p>
-            <a href="mailto:hello@mavros.ai?subject=About%20MAVROS%20Enquiry" className="btn btn-primary">Get In Touch</a>
+            <a href="mailto:official@mavrostech.in?subject=About%20MAVROS%20Enquiry" className="btn btn-primary">Get In Touch</a>
           </div>
         </div>
       </section>
