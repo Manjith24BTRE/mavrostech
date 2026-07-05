@@ -4,7 +4,6 @@ import VentureStack from '../components/VentureStack';
 import ImpactGrid from '../components/ImpactGrid';
 import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import Process from '../components/Process';
-import CaseStudiesPreview from '../components/CaseStudiesPreview';
 
 export default function Home() {
   const topRef = useRef(null);
@@ -189,8 +188,6 @@ export default function Home() {
           <VentureStack />
         </div>
       </section>
-
-      <CaseStudiesPreview />
 
       <section className="section-pad" id="impact">
         <div className="wrap">
