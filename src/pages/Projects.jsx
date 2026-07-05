@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const allProjects = [
   {
@@ -55,9 +56,16 @@ const allProjects = [
 
 export default function Projects() {
   return (
-    <main style={{ paddingTop: '120px', paddingBottom: '80px', minHeight: '100vh' }}>
-      <section className="wrap" style={{ marginBottom: '80px' }}>
-        <motion.div 
+    <>
+      <SEO
+        title="Our Projects | Mavros Tech"
+        description="Browse our collection of premium demo websites designed to demonstrate the quality, creativity, and performance you can expect when partnering with Mavros."
+        keywords="Web Design Projects, Demo Websites, Mavros Tech Portfolio, Premium Websites, AI Projects"
+        url="https://mavrostech.in/projects"
+      />
+      <main style={{ paddingTop: '120px', paddingBottom: '80px', minHeight: '100vh' }}>
+        <section className="wrap" style={{ marginBottom: '80px' }}>
+          <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -193,5 +201,6 @@ export default function Projects() {
         </div>
       </section>
     </main>
+    </>
   );
 }

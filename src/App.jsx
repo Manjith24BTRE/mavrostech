@@ -1,10 +1,11 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
-import Home from './pages/Home'
-import Team from './pages/Team'
-import Projects from './pages/Projects'
+import { useEffect, lazy, Suspense } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
+
+const Home = lazy(() => import('./pages/Home'))
+const Team = lazy(() => import('./pages/Team'))
+const Projects = lazy(() => import('./pages/Projects'))
 
 function App() {
   const location = useLocation();
@@ -41,11 +42,13 @@ function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<Team />} />
-        <Route path="/projects" element={<Projects />} />
-      </Routes>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<Team />} />
+          <Route path="/projects" element={<Projects />} />
+        </Routes>
+      </Suspense>
       <Footer />
     </>
   )

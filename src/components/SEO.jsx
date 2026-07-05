@@ -5,7 +5,8 @@ export default function SEO({
     description,
     keywords,
     image = "https://mavrostech.in/og-image.jpg",
-    url = "https://mavrostech.in/"
+    url = "https://mavrostech.in/",
+    schema = null
 }) {
     return (
         <Helmet>
@@ -13,6 +14,7 @@ export default function SEO({
 
             <meta name="description" content={description} />
             <meta name="keywords" content={keywords} />
+            <link rel="canonical" href={url} />
 
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
@@ -24,6 +26,12 @@ export default function SEO({
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={image} />
+
+            {schema && (
+                <script type="application/ld+json">
+                    {JSON.stringify(schema)}
+                </script>
+            )}
         </Helmet>
     );
 }

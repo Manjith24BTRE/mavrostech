@@ -119,6 +119,25 @@ export default function Home() {
         description="Mavros Tech builds AI applications, premium websites, SaaS platforms, UI/UX experiences and custom software for startups and businesses."
         keywords="AI Development, Website Development, SaaS Development, React Development, UI UX Design, Software Company, Mavros Tech"
         url="https://mavrostech.in"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Mavros Tech",
+          "url": "https://mavrostech.in",
+          "logo": "https://mavrostech.in/favicon.ico",
+          "email": "official@mavrostech.in",
+          "telephone": "+91-6361492452",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bangalore",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/mavrostech",
+            "https://www.instagram.com/mavrostech"
+          ]
+        }}
       />
 
       <main>
