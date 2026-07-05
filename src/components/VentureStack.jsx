@@ -112,26 +112,14 @@ export default function VentureStack() {
           </div>
         </div>
 
-        {/* Card 2: Veytrix Director */}
-        <div className="v-card v-card-2">
+        {/* Card 2: Coming Soon */}
+        <div className="v-card v-card-2"
+             style={{ justifyContent: 'center', alignItems: 'center', minHeight: '340px' }}>
           <div className="v-glow"></div>
-          <div className="v-card-header">
-            <span className="v-num">02 / PIPELINE</span>
-            <span className="v-badge live"><span className="dp"></span>In Development</span>
-          </div>
-          <div className="v-title">Veytrix Director</div>
-          <p className="v-desc">A smart pre-production and scripting workspace that drafts storyboards, designs shot templates, and coordinates virtual cameras to accelerate digital video preparation.</p>
-          <div className="v-footer">
-            <div className="venture-actions">
-              <span className="btn btn-primary" style={{ fontSize: '13px', padding: '10px 20px', borderRadius: '8px', cursor: 'default', opacity: 0.7 }}>Coming Soon</span>
-              <button onClick={() => setActiveModal('director')} className="btn btn-secondary">Learn More</button>
-            </div>
-            <div className="v-tags">
-              <span className="v-tag">Shot-lists</span>
-              <span className="v-tag">3D Pre-vis</span>
-              <span className="v-tag">Collaborative</span>
-            </div>
-          </div>
+          <span className="v-num" style={{ marginBottom: '12px' }}>02 / PIPELINE</span>
+          <div className="v-title"
+               style={{ margin: 0, background: 'linear-gradient(135deg, #ffffff 40%, #22d3a1 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            Coming Soon</div>
         </div>
       </div>
       

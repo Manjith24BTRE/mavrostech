@@ -5,19 +5,29 @@ const previewProjects = [
     title: 'Café & Restaurant',
     desc: 'Modern web experience with smooth booking flows.',
     category: 'Hospitality',
-    img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=600'
+    img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=600',
+    liveDemoUrl: 'https://cafe-vibe-gallery-kmgf.onrender.com'
   },
   {
-    title: 'Startup SaaS',
-    desc: 'High-conversion landing page with dashboard preview.',
-    category: 'Technology',
-    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600'
+    title: 'Banquet Hall',
+    desc: 'A luxurious web experience for booking grand banquet halls.',
+    category: 'Hospitality',
+    img: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=600',
+    liveDemoUrl: 'https://banquet-hall-1-lpdo.onrender.com'
   },
   {
-    title: 'Dental Clinic',
-    desc: 'Clean, trustworthy interface for healthcare professionals.',
-    category: 'Healthcare',
-    img: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=600'
+    title: 'Skin Care',
+    desc: 'A premium, relaxing web experience for skincare products.',
+    category: 'Beauty & Wellness',
+    img: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&q=80&w=600',
+    liveDemoUrl: 'https://lumire-clinic.onrender.com'
+  },
+  {
+    title: 'Hotel & Resort',
+    desc: 'Luxurious design with immersive imagery, room previews, and seamless booking.',
+    category: 'Travel',
+    img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=600',
+    liveDemoUrl: 'https://azure-haven-rf74.onrender.com/'
   }
 ];
 
@@ -81,7 +91,7 @@ export default function CaseStudiesPreview() {
                   onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                 />
               </div>
-              <div style={{ padding: '24px' }}>
+              <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <span style={{ 
                   display: 'inline-block', 
                   padding: '4px 12px', 
@@ -92,14 +102,39 @@ export default function CaseStudiesPreview() {
                   textTransform: 'uppercase', 
                   backgroundColor: 'rgba(34, 211, 161, 0.1)', 
                   color: '#22d3a1',
-                  marginBottom: '16px' 
+                  marginBottom: '16px',
+                  alignSelf: 'flex-start'
                 }}>
                   {project.category}
                 </span>
                 <h3 style={{ fontSize: '24px', margin: '0 0 12px 0', color: '#fff' }}>{project.title}</h3>
-                <p style={{ color: 'var(--muted)', fontSize: '15px', lineHeight: '1.6', margin: 0 }}>
+                <p style={{ color: 'var(--muted)', fontSize: '15px', lineHeight: '1.6', margin: '0 0 20px 0', flex: 1 }}>
                   {project.desc}
                 </p>
+                <div style={{ marginTop: 'auto' }}>
+                  <a 
+                    href={project.liveDemoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary"
+                    style={{ 
+                      display: 'inline-block',
+                      padding: '10px 20px', 
+                      fontSize: '14px',
+                      textAlign: 'center',
+                      textDecoration: 'none'
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (!project.liveDemoUrl || project.liveDemoUrl === '#') {
+                        e.preventDefault();
+                        navigate('/projects');
+                      }
+                    }}
+                  >
+                    Live Demo
+                  </a>
+                </div>
               </div>
             </div>
           ))}

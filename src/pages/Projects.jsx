@@ -8,27 +8,27 @@ const allProjects = [
     description: 'A modern, elegant web experience with smooth booking flows and menu showcase.',
     image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800',
     technologies: ['React', 'Framer Motion', 'Vite'],
-    liveDemoUrl: '#',
+    liveDemoUrl: 'https://cafe-vibe-gallery-kmgf.onrender.com',
     status: 'Live'
   },
   {
     id: 2,
-    title: 'Startup SaaS',
-    category: 'Technology',
-    description: 'High-conversion landing page with interactive dashboard previews and animations.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+    title: 'Banquet Hall',
+    category: 'Hospitality',
+    description: 'A luxurious web experience for booking grand banquet halls and event spaces.',
+    image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800',
     technologies: ['React', 'Tailwind CSS', 'Figma'],
-    liveDemoUrl: '#',
+    liveDemoUrl: 'https://banquet-hall-1-lpdo.onrender.com',
     status: 'Live'
   },
   {
     id: 3,
-    title: 'Dental Clinic',
-    category: 'Healthcare',
-    description: 'Clean, trustworthy interface for healthcare professionals with appointment scheduling.',
-    image: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800',
+    title: 'Skin Care',
+    category: 'Beauty & Wellness',
+    description: 'A premium, relaxing web experience for skincare products and treatment booking.',
+    image: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&q=80&w=800',
     technologies: ['Next.js', 'React', 'CSS Modules'],
-    liveDemoUrl: '#',
+    liveDemoUrl: 'https://lumire-clinic.onrender.com',
     status: 'Live'
   },
   {
@@ -38,7 +38,7 @@ const allProjects = [
     description: 'High-energy layout focusing on member signups, class schedules, and trainer profiles.',
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800',
     technologies: ['React', 'GSAP', 'Node.js'],
-    liveDemoUrl: '#',
+    liveDemoUrl: 'https://apex-performance-l5gf.onrender.com/',
     status: 'Live'
   },
   {
@@ -48,7 +48,7 @@ const allProjects = [
     description: 'Luxurious design with immersive imagery, room previews, and seamless booking.',
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800',
     technologies: ['React', 'Framer Motion'],
-    liveDemoUrl: '#',
+    liveDemoUrl: 'https://azure-haven-rf74.onrender.com/',
     status: 'Live'
   }
 ];
@@ -167,6 +167,8 @@ export default function Projects() {
 
                 <a 
                   href={project.liveDemoUrl} 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={project.status === 'Coming Soon' ? "btn" : "btn btn-primary"}
                   style={{ 
                     textAlign: 'center', 
@@ -175,7 +177,12 @@ export default function Projects() {
                     pointerEvents: project.status === 'Coming Soon' ? 'none' : 'auto'
                   }}
                   onClick={e => {
-                    if (project.status === 'Coming Soon') e.preventDefault();
+                    if (project.status === 'Coming Soon') {
+                      e.preventDefault();
+                    } else if (project.liveDemoUrl && project.liveDemoUrl !== '#') {
+                      e.preventDefault();
+                      window.open(project.liveDemoUrl, '_blank', 'noopener,noreferrer');
+                    }
                   }}
                 >
                   {project.status === 'Coming Soon' ? 'In Development' : 'Live Demo'}
