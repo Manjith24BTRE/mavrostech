@@ -1,10 +1,11 @@
+import SEO from "../components/SEO";
 import { useRef, useState } from 'react';
 
 const teamMembers = [
   {
     name: "Manjith Singh",
     role: "Co-founder and CEO",
-    imageSrc: "/assets/team_manjith.png",
+    imageSrc: "/assets/team_manjith.webp",
     about: "Hi, I'm Manjith Singh—a technology enthusiast passionate about Artificial Intelligence, innovation, and building impactful digital solutions. I enjoy transforming ideas into reality, solving complex challenges, and continuously learning to create meaningful products that combine technology, creativity, and business strategy.",
     skills: ["UI Design", "UX Design", "Logical Problem Solving", "Business Strategy", "Profit Analysis & Financial Planning", "Marketing Strategy", "Artificial Intelligence (AI)", "Entrepreneurship"],
     email: "smanjith3@gmail.com",
@@ -16,7 +17,7 @@ const teamMembers = [
   {
     name: "Mohan G M",
     role: "Co-founder and CTO",
-    imageSrc: "/assets/team_mohan.png",
+    imageSrc: "/assets/team_mohan.webp",
     about: "I am Mohan G M, a Robotics Engineering student passionate about building intelligent technologies that combine Artificial Intelligence, robotics, and software engineering. I enjoy transforming innovative ideas into scalable solutions that solve real-world challenges and create meaningful impact. As the Co-Founder & Chief Technology Officer (CTO), I lead the company's technology vision, product development, system architecture, and innovation strategy, ensuring our solutions are future-ready, reliable, and impactful.",
     skills: ["Artificial Intelligence (AI)", "Robotics & Automation", "Software Development", "System Architecture", "Security Architecture", "Product Strategy", "Research & Innovation", "Technology Leadership"],
     email: "mohan.711.2131@gmail.com",
@@ -28,7 +29,7 @@ const teamMembers = [
   {
     name: "Udaya K",
     role: "Co-founder and COO",
-    imageSrc: "/assets/team_udaya.png",
+    imageSrc: "/assets/team_udaya.webp",
     about: "I'm Udaya K, a B.Tech student specializing in Robotic Engineering — where precision meets innovation. I thrive at the intersection of technology and problem-solving, constantly exploring how intelligent systems can shape the future.",
     skills: ["Testing", "Quality Assurance", "Operations Management", "Database Management", "Strategic Planning", "Research"],
     email: "udayakatika@gmail.com",
@@ -40,7 +41,7 @@ const teamMembers = [
   {
     name: "Saswatee Swain",
     role: "Co-founder and CFO",
-    imageSrc: "/assets/team_saswatee.png",
+    imageSrc: "/assets/team_saswatee.webp",
     about: "I'm Saswatee Swain, a Btech student specializing in Robotic Engineering, I am driven to the power of intelligent systems for meaningful real world impact. I see technology as a bridge to solve complex global problems and committed to shape a positive future.",
     skills: ["Financial Strategy", "Architectural Design & Planning", "Artificial Intelligence", "Research & Analysis"],
     email: "saswateeswain2006@gmail.com",
@@ -52,7 +53,7 @@ const teamMembers = [
   {
     name: "Harshitha B.S",
     role: "CPO",
-    imageSrc: "/assets/team_harshitha.png",
+    imageSrc: "/assets/team_harshitha.webp",
     about: "I am Harshitha B.S, a passionate Robotics Engineering student focused on designing intelligent systems that combine robotics, artificial intelligence, and software development.",
     skills: ["AI/ML", "Backend Development", "Frontend Development", "NLP"],
     email: "harshithathbs@gmail.com",
@@ -107,6 +108,9 @@ function TeamCard({ member, onClick, index, currentIndex, total }) {
       <img
         src={member.imageSrc}
         alt={member.name}
+        loading="lazy"
+        decoding="async"
+        fetchPriority="low"
         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
       />
       <div
@@ -146,200 +150,221 @@ export default function Team() {
   };
 
   return (
-    <main style={{ paddingTop: '100px' }}>
-      <section className="section-pad">
-        <div className="wrap">
-          <div className="section-label">THE TEAM</div>
-          <h2 style={{ fontSize: 'clamp(26px, 4.2vw, 42px)', maxWidth: '640px', lineHeight: 1.1, marginBottom: '12px' }}>People behind the technology.</h2>
-          <p style={{ maxWidth: '480px', marginBottom: '60px' }}>Distributed remote-first creators working at the boundary of computer vision and UI engineering.</p>
+    <>
+      <SEO
+        title="Our Team | Mavros Tech"
+        description="Meet the founders and leadership team behind Mavros Tech. Experts in AI, software engineering, UI/UX, robotics, and business innovation."
+        keywords="Mavros Team, AI Engineers, Software Developers, Founders, CEO, CTO, Robotics Engineers"
+        url="https://mavrostech.in/about"
+      />
 
-          <div style={{ position: 'relative', width: '100%', height: '460px', display: 'flex', justifyContent: 'center', alignItems: 'center', perspective: '1200px' }}>
-            {teamMembers.map((member, idx) => (
-              <TeamCard
-                key={idx}
-                member={member}
-                index={idx}
-                currentIndex={currentIndex}
-                total={teamMembers.length}
-                onClick={setSelectedMember}
-              />
-            ))}
+      <main style={{ paddingTop: '100px' }}>
+        <section className="section-pad">
+          <div className="wrap">
+            <div className="section-label">THE TEAM</div>
+            <h2 style={{ fontSize: 'clamp(26px, 4.2vw, 42px)', maxWidth: '640px', lineHeight: 1.1, marginBottom: '12px' }}>People behind the technology.</h2>
+            <p style={{ maxWidth: '480px', marginBottom: '60px' }}>Distributed remote-first creators working at the boundary of computer vision and UI engineering.</p>
+
+            <div style={{ position: 'relative', width: '100%', height: '460px', display: 'flex', justifyContent: 'center', alignItems: 'center', perspective: '1200px' }}>
+              {teamMembers.map((member, idx) => (
+                <TeamCard
+                  key={idx}
+                  member={member}
+                  index={idx}
+                  currentIndex={currentIndex}
+                  total={teamMembers.length}
+                  onClick={setSelectedMember}
+                />
+              ))}
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', marginTop: '60px' }}>
+              <button
+                aria-label="Previous Team Member"
+                onClick={handlePrev}
+                style={{
+                  background: 'transparent',
+                  border: '1px solid var(--line-soft, #333)',
+                  color: 'currentColor',
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button
+                aria-label="Next Team Member"
+                onClick={handleNext}
+                style={{
+                  background: 'transparent',
+                  border: '1px solid var(--line-soft, #333)',
+                  color: 'currentColor',
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
           </div>
+        </section>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', marginTop: '60px' }}>
-            <button
-              onClick={handlePrev}
-              style={{
-                background: 'transparent',
-                border: '1px solid var(--line-soft, #333)',
-                color: 'currentColor',
-                width: '48px',
-                height: '48px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease'
-              }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-            <button
-              onClick={handleNext}
-              style={{
-                background: 'transparent',
-                border: '1px solid var(--line-soft, #333)',
-                color: 'currentColor',
-                width: '48px',
-                height: '48px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease'
-              }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
+        <section className="section-pad" style={{ borderTop: '1px solid var(--line-soft)' }}>
+          <div className="wrap">
+            <div className="contact-box">
+              <span className="c-corner tl"></span>
+              <span className="c-corner br"></span>
+              <h2>Let's build together.</h2>
+              <p className="lead">Interested in exploring our pipeline products, testing pre-releases, or collaborating on custom AI development? Let's connect.</p>
+              <a href="mailto:official@mavrostech.in?subject=About%20MAVROS%20Enquiry" className="btn btn-primary">Get In Touch</a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section-pad" style={{ borderTop: '1px solid var(--line-soft)' }}>
-        <div className="wrap">
-          <div className="contact-box">
-            <span className="c-corner tl"></span>
-            <span className="c-corner br"></span>
-            <h2>Let's build together.</h2>
-            <p className="lead">Interested in exploring our pipeline products, testing pre-releases, or collaborating on custom AI development? Let's connect.</p>
-            <a href="mailto:official@mavrostech.in?subject=About%20MAVROS%20Enquiry" className="btn btn-primary">Get In Touch</a>
-          </div>
-        </div>
-      </section>
-
-      {/* Modal */}
-      {selectedMember && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0, left: 0, right: 0, bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            zIndex: 9999,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '20px',
-            backdropFilter: 'blur(5px)'
-          }}
-          onClick={() => setSelectedMember(null)}
-        >
+        {/* Modal */}
+        {selectedMember && (
           <div
             style={{
-              backgroundColor: '#111',
-              border: '1px solid #333',
-              borderRadius: '16px',
-              padding: '32px',
-              maxWidth: '600px',
-              width: '100%',
-              position: 'relative',
+              position: 'fixed',
+              top: 0, left: 0, right: 0, bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              zIndex: 9999,
               display: 'flex',
-              flexDirection: 'column',
-              gap: '32px',
-              maxHeight: '90vh',
-              overflowY: 'auto'
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '20px',
+              backdropFilter: 'blur(5px)'
             }}
-            onClick={e => e.stopPropagation()}
+            onClick={() => setSelectedMember(null)}
           >
-            <button
-              onClick={() => setSelectedMember(null)}
+            <div
               style={{
-                position: 'absolute',
-                top: '16px',
-                right: '16px',
-                background: 'transparent',
-                border: 'none',
-                color: '#fff',
-                cursor: 'pointer',
-                fontSize: '24px',
-                lineHeight: 1,
-                zIndex: 10
+                backgroundColor: '#111',
+                border: '1px solid #333',
+                borderRadius: '16px',
+                padding: '32px',
+                maxWidth: '600px',
+                width: '100%',
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '32px',
+                maxHeight: '90vh',
+                overflowY: 'auto'
               }}
+              onClick={e => e.stopPropagation()}
             >
-              &times;
-            </button>
+              <button
+                aria-label="Close Team Member Details"
+                onClick={() => setSelectedMember(null)}
+                style={{
+                  position: 'absolute',
+                  top: '16px',
+                  right: '16px',
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#fff',
+                  cursor: 'pointer',
+                  fontSize: '24px',
+                  lineHeight: 1,
+                  zIndex: 10
+                }}
+              >
+                &times;
+              </button>
 
-            <img src={selectedMember.imageSrc} alt={selectedMember.name} style={{ width: '100%', height: 'auto', maxHeight: '400px', objectFit: 'contain', borderRadius: '12px', marginBottom: '-16px' }} />
+              <img
+                src={selectedMember.imageSrc}
+                alt={selectedMember.name}
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
+                width={600}
+                height={400}
+                style={{ width: '100%', height: 'auto', maxHeight: '400px', objectFit: 'contain', borderRadius: '12px', marginBottom: '-16px' }}
+              />
 
-            <div>
-              <h3 style={{ margin: 0, fontSize: '32px', fontWeight: '700', color: '#fff' }}>{selectedMember.name}</h3>
-              <div style={{ marginTop: '8px', color: '#ccc', fontSize: '18px', fontWeight: '500' }}>{selectedMember.role}</div>
-            </div>
-
-            <div>
-              <div style={{ fontSize: '13px', fontWeight: '600', color: '#888', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '12px' }}>ABOUT</div>
-              <div style={{ color: '#ccc', lineHeight: 1.6 }}>{selectedMember.about}</div>
-            </div>
-
-            {selectedMember.skills && selectedMember.skills.length > 0 && (
               <div>
-                <div style={{ fontSize: '13px', fontWeight: '600', color: '#888', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '12px' }}>SKILLS</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                  {selectedMember.skills.map((skill, index) => (
-                    <span key={index} style={{ padding: '6px 16px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px', fontSize: '14px', color: '#ccc' }}>
-                      {skill}
-                    </span>
-                  ))}
+                <h3 style={{ margin: 0, fontSize: '32px', fontWeight: '700', color: '#fff' }}>{selectedMember.name}</h3>
+                <div style={{ marginTop: '8px', color: '#ccc', fontSize: '18px', fontWeight: '500' }}>{selectedMember.role}</div>
+              </div>
+
+              <div>
+                <div style={{ fontSize: '13px', fontWeight: '600', color: '#888', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '12px' }}>ABOUT</div>
+                <div style={{ color: '#ccc', lineHeight: 1.6 }}>{selectedMember.about}</div>
+              </div>
+
+              {selectedMember.skills && selectedMember.skills.length > 0 && (
+                <div>
+                  <div style={{ fontSize: '13px', fontWeight: '600', color: '#888', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '12px' }}>SKILLS</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    {selectedMember.skills.map((skill, index) => (
+                      <span key={index} style={{ padding: '6px 16px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px', fontSize: '14px', color: '#ccc' }}>
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div>
+                <div style={{ fontSize: '13px', fontWeight: '600', color: '#888', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '12px' }}>CONTACT</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {selectedMember.email && (
+                    <a href={`mailto:${selectedMember.email}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '16px', padding: '16px', backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid #333', borderRadius: '8px' }}>
+                      <svg width="20" height="20" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                      <span style={{ color: '#ccc' }}>{selectedMember.email}</span>
+                    </a>
+                  )}
+                  {selectedMember.instagram && (
+                    <a href={selectedMember.instagramUrl || '#'} target="_blank" rel="noreferrer" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '16px', padding: '16px', backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid #333', borderRadius: '8px' }}>
+                      <svg width="20" height="20" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                      <span style={{ color: '#ccc' }}>{selectedMember.instagram}</span>
+                    </a>
+                  )}
                 </div>
               </div>
-            )}
 
-            <div>
-              <div style={{ fontSize: '13px', fontWeight: '600', color: '#888', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '12px' }}>CONTACT</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {selectedMember.email && (
-                  <a href={`mailto:${selectedMember.email}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '16px', padding: '16px', backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid #333', borderRadius: '8px' }}>
-                    <svg width="20" height="20" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    <span style={{ color: '#ccc' }}>{selectedMember.email}</span>
-                  </a>
-                )}
-                {selectedMember.instagram && (
-                  <a href={selectedMember.instagramUrl || '#'} target="_blank" rel="noreferrer" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '16px', padding: '16px', backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid #333', borderRadius: '8px' }}>
-                    <svg width="20" height="20" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    <span style={{ color: '#ccc' }}>{selectedMember.instagram}</span>
-                  </a>
-                )}
-              </div>
-            </div>
-
-            <div>
-              <div style={{ fontSize: '13px', fontWeight: '600', color: '#888', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '12px' }}>FOLLOW</div>
-              <div style={{ display: 'flex', gap: '12px' }}>
-                {selectedMember.linkedin && (
-                  <a href={selectedMember.linkedinUrl || `https://linkedin.com/search/results/all/?keywords=${encodeURIComponent(selectedMember.linkedin)}`} target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '8px', backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid #333', color: '#888' }}>
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
-                  </a>
-                )}
-                {selectedMember.instagram && (
-                  <a href={`https://instagram.com/${selectedMember.instagram.replace('@', '')}`} target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '8px', backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid #333', color: '#888' }}>
-                    <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                  </a>
-                )}
-                {selectedMember.email && (
-                  <a href={`mailto:${selectedMember.email}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '8px', backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid #333', color: '#888' }}>
-                    <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                  </a>
-                )}
+              <div>
+                <div style={{ fontSize: '13px', fontWeight: '600', color: '#888', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '12px' }}>FOLLOW</div>
+                <div style={{ display: 'flex', gap: '12px' }}>
+                  {selectedMember.linkedin && (
+                    <a href={selectedMember.linkedinUrl || `https://linkedin.com/search/results/all/?keywords=${encodeURIComponent(selectedMember.linkedin)}`} target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '8px', backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid #333', color: '#888' }}>
+                      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+                    </a>
+                  )}
+                  {selectedMember.instagram && (
+                    <a href={`https://instagram.com/${selectedMember.instagram.replace('@', '')}`} target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '8px', backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid #333', color: '#888' }}>
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                  )}
+                  {selectedMember.email && (
+                    <a href={`mailto:${selectedMember.email}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '8px', backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid #333', color: '#888' }}>
+                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-    </main>
+        )}
+      </main>
+    </>
   );
 }

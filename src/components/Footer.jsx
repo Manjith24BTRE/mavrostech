@@ -6,7 +6,10 @@ export default function Footer() {
         <div className="wrap">
             <div className="foot-grid">
                 <div>
-                    <Link to="/#top" className="logo"><span className="mark"></span>MAVROS</Link>
+                    <Link to="/#top" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+                      <img src="/assets/logo.svg" alt="Mavros Logo" style={{ height: '32px', width: 'auto', display: 'block' }} />
+                      <span style={{ fontSize: '20px', fontWeight: 'bold', letterSpacing: '1px', color: '#fff' }}>MAVROS</span>
+                    </Link>
                     <p className="muted" style={{maxWidth: '280px', fontSize: '14px'}}>AI video intelligence — understanding
                         footage so you don't have to scrub through it.</p>
                 </div>
@@ -20,13 +23,12 @@ export default function Footer() {
                 <div className="col">
                     <div className="col-h">Contact</div>
                     <a href="mailto:official@mavrostech.in">official@mavrostech.in</a>
-                    <p>Remote-first team</p>
                 </div>
             </div>
             <div className="foot-bottom">
                 <span>© 2026 MAVROS. All rights reserved.</span>
                 <div className="socials">
-                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="linkedin" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/company/mavros-tech/" target="_blank" rel="noreferrer" className="linkedin" aria-label="LinkedIn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
                             strokeLinecap="round" strokeLinejoin="round">
                             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">

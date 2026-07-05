@@ -40,7 +40,10 @@ export default function Header() {
       <header id="site-header" ref={headerRef}>
           <div className="wrap">
               <nav>
-                  <Link to="/#top" className="logo"><span className="mark"></span>MAVROS</Link>
+                  <Link to="/#top" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <img src="/assets/logo.svg" alt="Mavros Logo" style={{ height: '32px', width: 'auto', display: 'block' }} />
+                    <span style={{ fontSize: '20px', fontWeight: 'bold', letterSpacing: '1px', color: '#fff' }}>MAVROS</span>
+                  </Link>
                   <div className="nav-links" id="nav-links">
                       <Link to="/#top">Home</Link>
                       <Link to="/#product">Product</Link>
