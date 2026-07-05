@@ -124,7 +124,7 @@ export default function Home() {
           "@type": "Organization",
           "name": "Mavros Tech",
           "url": "https://mavrostech.in",
-          "logo": "https://mavrostech.in/favicon.ico",
+          "logo": "https://mavrostech.in/assets/logo.svg",
           "email": "official@mavrostech.in",
           "telephone": "+91-6361492452",
           "address": {
