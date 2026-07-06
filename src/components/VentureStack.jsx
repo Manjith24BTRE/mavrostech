@@ -39,12 +39,12 @@ export default function VentureStack() {
     if (!stackRef.current) return;
     const cards = stackRef.current.querySelectorAll('.v-card');
     if (cards.length === 0) return;
-    
+
     const stackRect = stackRef.current.getBoundingClientRect();
     const center = stackRect.left + stackRect.width / 2;
     let index = 0;
     let minDiff = Infinity;
-    
+
     cards.forEach((card, i) => {
       const rect = card.getBoundingClientRect();
       const cardCenter = rect.left + rect.width / 2;
@@ -122,7 +122,7 @@ export default function VentureStack() {
           <p className="v-desc" style={{ flex: 1 }}>
             A demonstration of our design standards, premium UI, smooth interactions, and scalable development practices.
           </p>
-          
+
           <div style={{ display: 'flex', gap: '12px', overflowX: 'hidden', paddingBottom: '16px', marginBottom: '8px', opacity: 0.8 }}>
             <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=200" alt="Cafe" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '12px' }} />
             <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=200" alt="Banquet" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '12px' }} />
@@ -136,7 +136,7 @@ export default function VentureStack() {
           </div>
         </div>
       </div>
-      
+
       <p className="venture-scroll-hint">&#8595; Hover to expand ventures</p>
       <div className="venture-controls">
         <button id="venture-prev" aria-label="Previous" onClick={handlePrev}>
@@ -158,7 +158,7 @@ export default function VentureStack() {
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
             </button>
-            
+
             <div className="v-modal-header">
               <span className="v-modal-subtitle">{selectedDetails.subtitle}</span>
               <h3 className="v-modal-title">{selectedDetails.title}</h3>
