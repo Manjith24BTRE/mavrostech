@@ -31,6 +31,13 @@ export default function Header() {
     document.getElementById('nav-links').classList.toggle('open');
   };
 
+  const closeMobileMenu = () => {
+    const navLinks = document.getElementById('nav-links');
+    if (navLinks && navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open');
+    }
+  };
+
   return (
     <>
       <div className="boot-flash" aria-hidden="true"></div>
@@ -40,16 +47,16 @@ export default function Header() {
       <header id="site-header" ref={headerRef}>
           <div className="wrap">
               <nav>
-                  <Link to="/#top" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Link to="/#top" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }} onClick={closeMobileMenu}>
                     <img src="/assets/logo.svg" alt="Mavros Logo" style={{ height: '32px', width: 'auto', display: 'block' }} />
                     <span style={{ fontSize: '20px', fontWeight: 'bold', letterSpacing: '1px', color: '#fff' }}>MAVROS</span>
                   </Link>
                   <div className="nav-links" id="nav-links">
-                      <Link to="/#top">Home</Link>
-                      <Link to="/#product">Product</Link>
-                      <Link to="/#contact">Contact</Link>
-                      <Link to="/about">Team</Link>
-                      <Link to="/#product" className="btn btn-primary cta-link">Try MAVROS.ai</Link>
+                      <Link to="/#top" onClick={closeMobileMenu}>Home</Link>
+                      <Link to="/#product" onClick={closeMobileMenu}>Product</Link>
+                      <Link to="/#contact" onClick={closeMobileMenu}>Contact</Link>
+                      <Link to="/about" onClick={closeMobileMenu}>Team</Link>
+                      <Link to="/#product" className="btn btn-primary cta-link" onClick={closeMobileMenu}>Try MAVROS.ai</Link>
                   </div>
                   <button className="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu" onClick={toggleMobileMenu}>☰</button>
               </nav>

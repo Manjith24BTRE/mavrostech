@@ -112,14 +112,28 @@ export default function VentureStack() {
           </div>
         </div>
 
-        {/* Card 2: Coming Soon */}
-        <div className="v-card v-card-2"
-             style={{ justifyContent: 'center', alignItems: 'center', minHeight: '340px' }}>
+        {/* Card 2: Crafted Experiences */}
+        <div className="v-card v-card-2" style={{ display: 'flex', flexDirection: 'column' }}>
           <div className="v-glow"></div>
-          <span className="v-num" style={{ marginBottom: '12px' }}>02 / PIPELINE</span>
-          <div className="v-title"
-               style={{ margin: 0, background: 'linear-gradient(135deg, #ffffff 40%, #22d3a1 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-            Coming Soon</div>
+          <div className="v-card-header">
+            <span className="v-num">02 / CASE STUDIES</span>
+          </div>
+          <div className="v-title">Crafted Experiences.</div>
+          <p className="v-desc" style={{ flex: 1 }}>
+            A demonstration of our design standards, premium UI, smooth interactions, and scalable development practices.
+          </p>
+          
+          <div style={{ display: 'flex', gap: '12px', overflowX: 'hidden', paddingBottom: '16px', marginBottom: '8px', opacity: 0.8 }}>
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=200" alt="Cafe" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '12px' }} />
+            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=200" alt="Banquet" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '12px' }} />
+            <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&q=80&w=200" alt="Skincare" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '12px' }} />
+          </div>
+
+          <div className="v-footer" style={{ display: 'flex', justifyContent: 'flex-end', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '20px' }}>
+            <button onClick={() => window.location.href = '/projects'} className="btn btn-primary" style={{ fontSize: '13px', padding: '10px 20px', borderRadius: '8px' }}>
+              Explore All Projects &rarr;
+            </button>
+          </div>
         </div>
       </div>
       

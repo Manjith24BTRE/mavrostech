@@ -218,7 +218,6 @@ export default function Home() {
           </div>
         </section>
 
-        <CaseStudiesPreview />
 
         <section className="section-pad" id="impact">
           <div className="wrap">
