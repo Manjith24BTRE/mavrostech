@@ -55,7 +55,6 @@ export default function Header() {
                       <Link to="/#top" onClick={closeMobileMenu}>Home</Link>
                       <Link to="/#product" onClick={closeMobileMenu}>Product</Link>
                       <Link to="/#contact" onClick={closeMobileMenu}>Contact</Link>
-                      <Link to="/about" onClick={closeMobileMenu}>Team</Link>
                       <Link to="/#product" className="btn btn-primary cta-link" onClick={closeMobileMenu}>Try MAVROS.ai</Link>
                   </div>
                   <button className="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu" onClick={toggleMobileMenu}>☰</button>
