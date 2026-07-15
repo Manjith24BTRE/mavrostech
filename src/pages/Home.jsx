@@ -117,27 +117,37 @@ export default function Home() {
       <SEO
         title="Mavros Tech | AI Development & Premium Website Development"
         description="Mavros Tech builds AI applications, premium websites, SaaS platforms, UI/UX experiences and custom software for startups and businesses."
-        keywords="AI Development, Website Development, SaaS Development, React Development, UI UX Design, Software Company, Mavros Tech"
+        keywords="Mavros, Mavros Tech, Mavros Tech IN, Mavros.in, Mavros AI, AI Development, Website Development, SaaS Development, React Development, UI UX Design, Software Company"
         url="https://mavrostech.in"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "Mavros Tech",
-          "url": "https://mavrostech.in",
-          "logo": "https://mavrostech.in/assets/logo.svg",
-          "email": "official@mavrostech.in",
-          "telephone": "+91-6361492452",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Bangalore",
-            "addressRegion": "Karnataka",
-            "addressCountry": "IN"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Mavros Tech",
+            "alternateName": ["Mavros", "Mavros Tech IN", "Mavros.in", "Mavros AI"],
+            "url": "https://mavrostech.in",
+            "logo": "https://mavrostech.in/assets/logo.svg",
+            "email": "official@mavrostech.in",
+            "telephone": "+91-6361492452",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Bangalore",
+              "addressRegion": "Karnataka",
+              "addressCountry": "IN"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/company/mavrostech",
+              "https://www.instagram.com/mavrostech"
+            ]
           },
-          "sameAs": [
-            "https://www.linkedin.com/company/mavrostech",
-            "https://www.instagram.com/mavrostech"
-          ]
-        }}
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Mavros Tech",
+            "alternateName": ["Mavros", "Mavros Tech IN", "Mavros.in", "Mavros AI"],
+            "url": "https://mavrostech.in"
+          }
+        ]}
       />
 
       <main>
@@ -168,13 +178,13 @@ export default function Home() {
             <div className="hero-grid-layout">
               <div className="hero-copy">
                 <div className="eyebrow" style={{ textTransform: 'uppercase', letterSpacing: '0.12em', fontFamily: 'var(--mono)', fontSize: '13px', marginBottom: '20px' }}>
-                  <span className="dot"></span>AI PRODUCTS & FREELANCE WEBSITE'S _
+                  <span className="dot"></span>MAVROS TECH | AI PRODUCTS & WEBSITES _
                 </div>
                 <h1 style={{ lineHeight: '1.15', marginBottom: '32px', fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 700 }}>
                   One Vision,<br /><span className="accent">Endless Possibilities.</span>
                 </h1>
                 <p className="hero-sub" style={{ maxWidth: '520px', color: 'var(--muted)', fontSize: '18px', lineHeight: '1.6' }}>
-                  MAVROS is an AI innovation company focused on building intelligent applications, freelance website's, and digital products that solve real-world problems. We combine cutting-edge artificial intelligence with modern software development to create scalable solutions that help businesses and people work smarter, faster, and more efficiently.
+                  MAVROS is an AI innovation company focused on building intelligent applications, freelance websites, and digital products that solve real-world problems. We combine cutting-edge artificial intelligence with modern software development to create scalable solutions that help businesses and people work smarter, faster, and more efficiently.
                 </p>
                 <div style={{ height: '1px', background: 'rgba(255,255,255,0.1)', marginTop: '45px', maxWidth: '520px' }}></div>
               </div>
@@ -194,9 +204,9 @@ export default function Home() {
               <div className="vision-spacer"></div>
               <div className="reveal">
                 <div className="section-label">VISION</div>
-                <h2>We build products that make technology smarter and more accessible.</h2>
+                <h2>At Mavros, we build products that make technology smarter and more accessible.</h2>
                 <p className="lead">
-                  MAVROS creates intelligent software, AI-driven applications,Freelance website's and digital
+                  MAVROS creates intelligent software, AI-driven applications, freelance websites and digital
                   experiences that empower businesses to work smarter and grow faster. We focus on building
                   practical, scalable solutions that bridge the gap between innovation and everyday use.
                 </p>

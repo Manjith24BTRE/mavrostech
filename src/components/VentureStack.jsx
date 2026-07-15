@@ -124,9 +124,9 @@ export default function VentureStack() {
           </p>
 
           <div style={{ display: 'flex', gap: '12px', overflowX: 'hidden', paddingBottom: '16px', marginBottom: '8px', opacity: 0.8 }}>
-            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=200" alt="Cafe" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '12px' }} />
-            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=200" alt="Banquet" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '12px' }} />
-            <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&q=80&w=200" alt="Skincare" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '12px' }} />
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=200" alt="Cafe and Restaurant Premium Web Design - Mavros Tech" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '12px' }} />
+            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=200" alt="Luxury Banquet Hall Booking Website Concept - Mavros Tech" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '12px' }} />
+            <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&q=80&w=200" alt="Premium Skincare & Beauty Clinic Website Concept - Mavros Tech" style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '12px' }} />
           </div>
 
           <div className="v-footer" style={{ display: 'flex', justifyContent: 'flex-end', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '20px' }}>
