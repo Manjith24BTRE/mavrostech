@@ -4,8 +4,8 @@ export default function SEO({
     title,
     description,
     keywords,
-    image = "https://mavrostech.in/og-image.jpg",
-    url = "https://mavrostech.in/",
+    image = "https://www.mavrostech.in/og-image.jpg",
+    url = "https://www.www.mavrostech.in/",
     schema = null
 }) {
     return (
