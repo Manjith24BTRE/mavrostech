@@ -9,7 +9,7 @@ const allProjects = [
     description: 'A modern, elegant web experience with smooth booking flows and menu showcase.',
     image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800',
     technologies: ['React', 'Framer Motion', 'Vite'],
-    liveDemoUrl: 'https://cafe-vibe-gallery-kmgf.onrender.com',
+    liveDemoUrl: "https://cafe-vibe-gallery-2.onrender.com",
     status: 'Live'
   },
   {
@@ -19,7 +19,7 @@ const allProjects = [
     description: 'A luxurious web experience for booking grand banquet halls and event spaces.',
     image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800',
     technologies: ['React', 'Tailwind CSS', 'Figma'],
-    liveDemoUrl: 'https://banquet-hall-1-lpdo.onrender.com',
+    liveDemoUrl: "https://banquet-hall-2.onrender.com",
     status: 'Live'
   },
   {
@@ -29,7 +29,7 @@ const allProjects = [
     description: 'A premium, relaxing web experience for skincare products and treatment booking.',
     image: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&q=80&w=800',
     technologies: ['Next.js', 'React', 'CSS Modules'],
-    liveDemoUrl: 'https://lumire-clinic.onrender.com',
+    liveDemoUrl: "https://lumire-clinic-2.onrender.com",
     status: 'Live'
   },
   {
@@ -39,7 +39,7 @@ const allProjects = [
     description: 'High-energy layout focusing on member signups, class schedules, and trainer profiles.',
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800',
     technologies: ['React', 'GSAP', 'Node.js'],
-    liveDemoUrl: 'https://apex-performance-l5gf.onrender.com/',
+    liveDemoUrl: "https://apex-performance-2.onrender.com",
     status: 'Live'
   },
   {
@@ -49,7 +49,7 @@ const allProjects = [
     description: 'Luxurious design with immersive imagery, room previews, and seamless booking.',
     image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800',
     technologies: ['React', 'Framer Motion'],
-    liveDemoUrl: 'https://azure-haven-rf74.onrender.com/',
+    liveDemoUrl: "https://azure-haven-1-vja5.onrender.com",
     status: 'Live'
   }
 ];
