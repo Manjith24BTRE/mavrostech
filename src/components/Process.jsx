@@ -95,7 +95,7 @@ export default function Process() {
                   fontSize: '1.45rem',
                   fontWeight: 800,
                   letterSpacing: '-0.02em',
-                  background: 'linear-gradient(135deg,#fff 40%,var(--accent,#7c6ef2))',
+                  background: 'linear-gradient(135deg,#ffffff 0%, rgba(255,255,255,0.92) 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text'

@@ -103,7 +103,7 @@ export default function Projects() {
                   transition: 'border-color 0.3s ease, background 0.3s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(34, 211, 161, 0.3)';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.16)';
                   e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
                 }}
                 onMouseLeave={(e) => {
@@ -146,8 +146,8 @@ export default function Projects() {
                     fontWeight: '600',
                     letterSpacing: '1px',
                     textTransform: 'uppercase',
-                    backgroundColor: 'rgba(34, 211, 161, 0.1)',
-                    color: '#22d3a1',
+                    backgroundColor: 'rgba(255,255,255,0.06)',
+                    color: '#f8fafc',
                     marginBottom: '16px'
                   }}>
                     {project.category}

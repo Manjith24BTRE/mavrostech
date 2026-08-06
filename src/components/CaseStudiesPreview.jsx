@@ -100,8 +100,8 @@ export default function CaseStudiesPreview() {
                   fontWeight: '600', 
                   letterSpacing: '1px', 
                   textTransform: 'uppercase', 
-                  backgroundColor: 'rgba(34, 211, 161, 0.1)', 
-                  color: '#22d3a1',
+                  backgroundColor: 'rgba(255,255,255,0.06)', 
+                  color: '#f8fafc',
                   marginBottom: '16px',
                   alignSelf: 'flex-start'
                 }}>

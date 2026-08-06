@@ -1,106 +1,119 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import Cube from '../components/Cube';
+import Hero from '../components/Hero';
+import Process from '../components/Process';
 import VentureStack from '../components/VentureStack';
 import ImpactGrid from '../components/ImpactGrid';
 import BeforeAfterSlider from '../components/BeforeAfterSlider';
-import Process from '../components/Process';
 import CaseStudiesPreview from '../components/CaseStudiesPreview';
 
-export default function Home() {
-  const topRef = useRef(null);
-  const visionRef = useRef(null);
+const serviceCards = [
+  {
+    title: 'AI & Autonomous Agents',
+    badge: 'Most Requested',
+    description: 'Design and deploy intelligent systems that combine RAG, autonomous agents, and fine-tuned LLM workflows.',
+    highlights: ['Custom RAG', 'AI Agents', 'LLM Fine-tuning'],
+    icon: 'brain',
+  },
+  {
+    title: 'Custom SaaS & Software',
+    badge: 'Production Ready',
+    description: 'Build enterprise web apps, SaaS platforms, CRM systems and ERP solutions tailored for scale.',
+    highlights: ['Enterprise Web Apps', 'SaaS Platforms', 'CRM & ERP'],
+    icon: 'code',
+  },
+  {
+    title: 'Mobile App Development',
+    badge: 'Cross Platform',
+    description: 'Launch native and cross-platform mobile experiences with Flutter, React Native, Android and iOS.',
+    highlights: ['Flutter', 'React Native', 'Android & iOS'],
+    icon: 'mobile',
+  },
+  {
+    title: 'Enterprise Automation',
+    badge: 'High ROI',
+    description: 'Automate workflows, streamline business processes, and scale operational efficiency with AI.',
+    highlights: ['Workflow Automation', 'AI Process Automation', 'Business Automation'],
+    icon: 'automation',
+  },
+  {
+    title: 'Cloud & DevOps Solutions',
+    badge: 'Zero Downtime',
+    description: 'Secure cloud infrastructure, containerized platforms and CI/CD pipelines for reliable delivery.',
+    highlights: ['AWS / Azure / GCP', 'Kubernetes & Docker', 'CI/CD Pipelines'],
+    icon: 'cloud',
+  },
+  {
+    title: 'UI/UX & Product Design',
+    badge: 'Design System',
+    description: 'Craft premium interfaces, design systems and product experiences grounded in research and prototyping.',
+    highlights: ['Figma & Design Systems', 'User Research', 'Prototyping'],
+    icon: 'design',
+  },
+];
 
+const renderIcon = (type) => {
+  switch (type) {
+    case 'brain':
+      return (
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 10c-4 0-6 4-6 8s2 8 6 8h16c4 0 6-4 6-8s-2-8-6-8H16Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M16 18v8M24 10v12M32 18v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    case 'code':
+      return (
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 16 12 24l6 8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M30 16 36 24l-6 8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M22 12h4M22 36h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    case 'mobile':
+      return (
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="16" y="8" width="16" height="32" rx="4" stroke="currentColor" strokeWidth="2" />
+          <path d="M24 34v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    case 'automation':
+      return (
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 18h20M14 30h20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path d="M18 22l-4-4 4-4M30 22l4-4-4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M18 26l-4 4 4 4M30 26l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case 'cloud':
+      return (
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 28H12a8 8 0 1 1 0-16 9 9 0 0 1 17.7 1.9A7 7 0 1 1 40 18h-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M18 32h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    case 'design':
+      return (
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 8 10 40h28L24 8Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+          <path d="M24 16v16M20 22h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+};
+
+export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
-      const topEl = topRef.current;
-      const visionEl = visionRef.current;
-      const cubeStage = document.getElementById('cube-stage');
-      const cubeWrap = document.getElementById('cube-wrap');
-      const placeholder = document.getElementById('cube-stage-placeholder');
-
-      if (!topEl || !visionEl || !cubeStage || !cubeWrap || !placeholder) return;
-
-      const sections = [topEl, visionEl];
-      const sectionCenters = sections.map(sec => {
-        const rect = sec.getBoundingClientRect();
-        return rect.top + window.scrollY + rect.height / 2;
+      const revealElements = document.querySelectorAll('.reveal');
+      revealElements.forEach((entry) => {
+        const rect = entry.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.9) {
+          entry.classList.add('in');
+        }
       });
-
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      const scrollY = window.scrollY;
-      const viewportCenterY = scrollY + h / 2;
-
-      let idx = 0;
-      for (let i = 0; i < sectionCenters.length - 1; i++) {
-        if (viewportCenterY >= sectionCenters[i]) {
-          idx = i;
-        }
-      }
-
-      const c1 = sectionCenters[idx];
-      const c2 = sectionCenters[idx + 1];
-      let pct = 0;
-      if (c2 && c2 > c1) {
-        pct = (viewportCenterY - c1) / (c2 - c1);
-        pct = Math.max(0, Math.min(1, pct));
-      }
-      const ease = pct * pct * (3 - 2 * pct);
-
-      const targetPageY = c1 + (c2 ? (c2 - c1) * ease : 0);
-      const targetViewportY = targetPageY - scrollY;
-
-      const isDesktop = w > 880;
-      const amplitude = isDesktop ? Math.min(280, w * 0.22) : 0;
-      const screenCenterX = w / 2;
-
-      let startX = screenCenterX;
-      let currentX = screenCenterX;
-      let currentY = h / 2;
-
-      const pRect = placeholder.getBoundingClientRect();
-      startX = pRect.left + pRect.width / 2;
-      currentX = startX;
-      currentY = pRect.top + pRect.height / 2;
-
-      const xTargets = [startX, screenCenterX - amplitude];
-      const x1 = xTargets[idx] !== undefined ? xTargets[idx] : startX;
-      const x2 = xTargets[idx + 1] !== undefined ? xTargets[idx + 1] : (screenCenterX - amplitude);
-      const targetViewportX = x1 + (x2 - x1) * ease;
-
-      const translateX = targetViewportX - currentX;
-      const translateY = targetViewportY - currentY;
-
-      if (isDesktop) {
-        cubeWrap.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
-      } else {
-        cubeWrap.style.transform = `translate3d(0, 0, 0)`;
-      }
-
-      const docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrollPct = docH > 0 ? scrollY / docH : 0;
-      let opacity = 1;
-      if (scrollPct > 0.85) {
-        opacity = 1 - (scrollPct - 0.85) / 0.15;
-      }
-      if (isDesktop) {
-        cubeWrap.style.opacity = Math.max(0, Math.min(1, opacity));
-      } else {
-        cubeWrap.style.opacity = 1;
-      }
-
-      const hint = cubeStage.querySelector('.cube-hint');
-      if (hint) {
-        const heroCenter = sectionCenters[0];
-        const vCenter = sectionCenters[1];
-        let hintOpacity = 1;
-        if (viewportCenterY > heroCenter && vCenter) {
-          hintOpacity = 1 - (viewportCenterY - heroCenter) / (vCenter - heroCenter);
-          hintOpacity = Math.max(0, Math.min(1, hintOpacity));
-        }
-        hint.style.opacity = hintOpacity;
-      }
     };
 
     handleScroll();
@@ -151,75 +164,46 @@ export default function Home() {
       />
 
       <main>
-        <section className="hero" id="top" ref={topRef}>
-          <div className="hero-blobs">
-            <span className="blob blob-a"></span>
-            <span className="blob blob-b"></span>
-            <span className="blob blob-c"></span>
-          </div>
-          <svg className="hero-lines" viewBox="0 0 400 400" fill="none">
-            <path d="M0 320 Q100 280 200 320 T400 300" stroke="#ffffff" strokeWidth="1" />
-            <path d="M0 350 Q100 300 200 350 T400 330" stroke="#999999" strokeWidth="1" />
-            <path d="M0 380 Q100 330 200 380 T400 360" stroke="#ffffff" strokeWidth="1" />
-            <circle cx="340" cy="120" r="2" fill="#ffffff" />
-            <circle cx="300" cy="200" r="2" fill="#999999" />
-            <circle cx="370" cy="240" r="2" fill="#ffffff" />
-          </svg>
+        <Hero />
 
-          <div className="hud-frame">
-            <span className="hud-corner tl"></span>
-            <span className="hud-corner tr"></span>
-            <span className="hud-corner bl"></span>
-            <span className="hud-corner br"></span>
-            <span className="hud-label top-right">REC ● 4K / 60</span>
-          </div>
-
-          <div className="wrap hero-inner">
-            <div className="hero-grid-layout">
-              <div className="hero-copy">
-                <div className="eyebrow" style={{ textTransform: 'uppercase', letterSpacing: '0.12em', fontFamily: 'var(--mono)', fontSize: '13px', marginBottom: '20px' }}>
-                  <span className="dot"></span>MAVROS TECH | AI PRODUCTS & WEBSITES _
-                </div>
-                <h1 style={{ lineHeight: '1.15', marginBottom: '32px', fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 700 }}>
-                  One Vision,<br /><span className="accent">Endless Possibilities.</span>
-                </h1>
-                <p className="hero-sub" style={{ maxWidth: '520px', color: 'var(--muted)', fontSize: '18px', lineHeight: '1.6' }}>
-                  MAVROS is an AI innovation company focused on building intelligent applications, freelance websites, and digital products that solve real-world problems. We combine cutting-edge artificial intelligence with modern software development to create scalable solutions that help businesses and people work smarter, faster, and more efficiently.
-                </p>
-                <div style={{ height: '1px', background: 'rgba(255,255,255,0.1)', marginTop: '45px', maxWidth: '520px' }}></div>
-              </div>
-
-              <div className="cube-stage-placeholder" id="cube-stage-placeholder">
-                <div className="cube-stage" id="cube-stage">
-                  <Cube />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section-pad" id="vision" ref={visionRef}>
+        <section className="section-pad services-section" id="services">
           <div className="wrap">
-            <div className="vision-grid">
-              <div className="vision-spacer"></div>
-              <div className="reveal">
-                <div className="section-label">VISION</div>
-                <h2>At Mavros, we build products that make technology smarter and more accessible.</h2>
-                <p className="lead">
-                  MAVROS creates intelligent software, AI-driven applications, freelance websites and digital
-                  experiences that empower businesses to work smarter and grow faster. We focus on building
-                  practical, scalable solutions that bridge the gap between innovation and everyday use.
-                </p>
-              </div>
+            <div className="services-header reveal">
+              <div className="section-label">SERVICES</div>
+              <h2 className="section-title">End-to-End AI Engineering & Custom Software</h2>
+              <p className="section-subtitle">We deliver complete digital transformation—from AI strategy and architecture to production deployment and long-term scaling.</p>
+            </div>
+
+            <div className="services-grid">
+              {serviceCards.map((service) => (
+                <div className="service-card reveal" key={service.title}>
+                  <div className="service-card-top">
+                    <div className="service-icon">{renderIcon(service.icon)}</div>
+                    <span className="service-badge">{service.badge}</span>
+                  </div>
+                  <h3>{service.title}</h3>
+                  <p className="service-copy">{service.description}</p>
+                  <div className="service-divider" />
+                  <ul className="service-highlights">
+                    {service.highlights.map((highlight) => (
+                      <li key={highlight}>
+                        <span className="highlight-check">✓</span>
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to="/#contact" className="service-card-cta">Start Project →</Link>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         <Process />
 
-        <section className="section-pad" id="product">
+        <section className="section-pad" id="tech-stack">
           <div className="wrap">
-            <div className="section-label venture-sticky-label">VENTURE STUDIO</div>
+            <div className="section-label venture-sticky-label">TECH STACK</div>
             <h2 className="reveal" style={{ fontSize: 'clamp(26px,3.4vw,42px)', maxWidth: '700px', marginBottom: '60px' }}>
               Products we build.<br />
               <span style={{ background: 'linear-gradient(135deg,#fff 30%,#9b8aff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Ventures that scale.</span>
@@ -237,6 +221,100 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="section-pad" id="client-portal">
+          <div className="wrap">
+            <div className="section-label">CLIENT PORTAL</div>
+            <h2 className="reveal" style={{ fontSize: 'clamp(26px,3.4vw,38px)', maxWidth: '680px' }}>Start your project with Mavros.</h2>
+            <p className="lead reveal" style={{ maxWidth: '720px', marginTop: '24px' }}>
+              Access our secure client onboarding portal to discuss your AI, software, or website project.
+            </p>
+
+            <div className="client-portal-grid reveal">
+              <div className="client-portal-card">
+                <div className="panel-heading">Client Portal Benefits</div>
+                <p>Access our secure client onboarding portal to discuss your AI, software, or website project.</p>
+                <ul className="portal-features">
+                  <li>Dedicated Project Manager</li>
+                  <li>NDA Available</li>
+                  <li>Weekly Progress Updates</li>
+                  <li>Secure File Sharing</li>
+                  <li>24/7 Client Dashboard</li>
+                </ul>
+                <div className="contact-details">
+                  <div>
+                    <strong>Email</strong>
+                    <p>projects@mavros.ai</p>
+                  </div>
+                  <div>
+                    <strong>Phone</strong>
+                    <p>+91 XXXXX XXXXX</p>
+                  </div>
+                  <div>
+                    <strong>Location</strong>
+                    <p>Bangalore, India</p>
+                  </div>
+                </div>
+              </div>
+
+              <form className="client-portal-form" onSubmit={(e) => e.preventDefault()}>
+                <div className="field-group">
+                  <label htmlFor="full-name">Full Name</label>
+                  <input id="full-name" type="text" placeholder="Full Name" />
+                </div>
+                <div className="field-group">
+                  <label htmlFor="company-name">Company Name</label>
+                  <input id="company-name" type="text" placeholder="Company Name" />
+                </div>
+                <div className="field-group">
+                  <label htmlFor="business-email">Business Email</label>
+                  <input id="business-email" type="email" placeholder="Business Email" />
+                </div>
+                <div className="field-group">
+                  <label htmlFor="phone-number">Phone Number</label>
+                  <input id="phone-number" type="tel" placeholder="Phone Number" />
+                </div>
+                <div className="field-group">
+                  <label htmlFor="service-required">Service Required</label>
+                  <select id="service-required">
+                    <option>AI Development</option>
+                    <option>Website Development</option>
+                    <option>Mobile App</option>
+                    <option>SaaS Platform</option>
+                    <option>UI/UX Design</option>
+                    <option>Automation</option>
+                  </select>
+                </div>
+                <div className="field-group">
+                  <label htmlFor="budget">Budget</label>
+                  <select id="budget">
+                    <option>Under $10K</option>
+                    <option>$10K - $25K</option>
+                    <option>$25K - $50K</option>
+                    <option>$50K+</option>
+                  </select>
+                </div>
+                <div className="field-group">
+                  <label htmlFor="timeline">Timeline</label>
+                  <select id="timeline">
+                    <option>1 - 3 months</option>
+                    <option>3 - 6 months</option>
+                    <option>6 - 12 months</option>
+                    <option>Flexible / Not sure</option>
+                  </select>
+                </div>
+                <div className="field-group">
+                  <label htmlFor="project-description">Project Description</label>
+                  <textarea id="project-description" rows="5" placeholder="Describe your project" />
+                </div>
+                <div className="field-group">
+                  <label htmlFor="requirements-document">Upload Requirement Document</label>
+                  <input id="requirements-document" type="file" />
+                </div>
+                <button type="submit" className="btn btn-primary">Access Client Portal</button>
+              </form>
+            </div>
+          </div>
+        </section>
 
         <section className="section-pad" id="contact">
           <div className="wrap">

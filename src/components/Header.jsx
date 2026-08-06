@@ -53,9 +53,11 @@ export default function Header() {
                   </Link>
                   <div className="nav-links" id="nav-links">
                       <Link to="/#top" onClick={closeMobileMenu}>Home</Link>
-                      <Link to="/#product" onClick={closeMobileMenu}>Product</Link>
-                      <Link to="/#contact" onClick={closeMobileMenu}>Contact</Link>
-                      <Link to="/#product" className="btn btn-primary cta-link" onClick={closeMobileMenu}>Try MAVROS.ai</Link>
+                      <Link to="/#services" onClick={closeMobileMenu}>Services</Link>
+                      <Link to="/#process" onClick={closeMobileMenu}>Process</Link>
+                      <Link to="/#tech-stack" onClick={closeMobileMenu}>Tech Stack</Link>
+                      <Link to="/#client-portal" onClick={closeMobileMenu}>Client Portal</Link>
+                      <Link to="/#contact" className="btn btn-primary cta-link" onClick={closeMobileMenu}>Book Strategy Call</Link>
                   </div>
                   <button className="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu" onClick={toggleMobileMenu}>☰</button>
               </nav>

@@ -15,8 +15,11 @@ export default function Footer() {
                     <div className="col">
                         <div className="col-h">Site</div>
                         <Link to="/#top">Home</Link>
-                        <Link to="/#product">Product</Link>
-                        <Link to="/#contact">Contact</Link>
+                        <Link to="/#services">Services</Link>
+                        <Link to="/#process">Process</Link>
+                        <Link to="/#tech-stack">Tech Stack</Link>
+                        <Link to="/#client-portal">Client Portal</Link>
+                        <Link to="/#contact">Book Strategy Call</Link>
                     </div>
                     <div className="col">
                         <div className="col-h">Contact</div>

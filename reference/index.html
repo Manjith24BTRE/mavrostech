@@ -1431,10 +1431,13 @@
                 scroll-snap-type: x mandatory;
                 gap: 20px;
                 justify-content: flex-start;
-                -ms-overflow-style: none;  /* IE and Edge */
-                scrollbar-width: none;  /* Firefox */
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
                 scroll-behavior: smooth;
             }
+
             .venture-stack::-webkit-scrollbar {
                 display: none;
             }
@@ -1449,7 +1452,7 @@
                 flex: 0 0 88%;
                 max-width: 88%;
                 z-index: 1 !important;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
             }
 
             .v-card-2 {
@@ -1471,8 +1474,8 @@
                 width: 44px;
                 height: 44px;
                 border-radius: 50%;
-                border: 1px solid rgba(255,255,255,0.15);
-                background: rgba(255,255,255,0.03);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                background: rgba(255, 255, 255, 0.03);
                 color: var(--muted);
                 display: flex;
                 align-items: center;
@@ -1483,8 +1486,8 @@
 
             .venture-controls button:hover {
                 color: #fff;
-                border-color: rgba(255,255,255,0.4);
-                background: rgba(255,255,255,0.1);
+                border-color: rgba(255, 255, 255, 0.4);
+                background: rgba(255, 255, 255, 0.1);
             }
 
             .venture-pagination {
@@ -2309,10 +2312,11 @@
                 <a href="#top" class="logo"><span class="mark"></span>VEYTRIX</a>
                 <div class="nav-links" id="nav-links">
                     <a href="#top">Home</a>
-                    <a href="#product">Product</a>
-                    <a href="#contact">Contact</a>
-                    <a href="about.html">Team</a>
-                    <a href="#product" class="btn btn-primary cta-link">Try Veytrix.ai</a>
+                    <a href="#services">Services</a>
+                    <a href="#process">Process</a>
+                    <a href="#tech-stack">Tech Stack</a>
+                    <a href="#client-portal">Client Portal</a>
+                    <a href="#contact" class="btn btn-primary cta-link">Book Strategy Call</a>
                 </div>
                 <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">☰</button>
             </nav>
@@ -2576,11 +2580,17 @@
                 <p class="venture-scroll-hint">&#8595; Hover to expand ventures</p>
                 <div class="venture-controls">
                     <button id="venture-prev" aria-label="Previous">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
                     </button>
                     <span class="venture-pagination" id="venture-pag">01 / 02</span>
                     <button id="venture-next" aria-label="Next">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -3234,14 +3244,14 @@
             var btnNext = document.getElementById('venture-next');
 
             if (ventureStack && venturePag && btnPrev && btnNext) {
-                var updateVenturePagination = function() {
+                var updateVenturePagination = function () {
                     var cards = ventureStack.querySelectorAll('.v-card');
                     if (cards.length === 0) return;
                     var stackRect = ventureStack.getBoundingClientRect();
                     var center = stackRect.left + stackRect.width / 2;
                     var index = 0;
                     var minDiff = Infinity;
-                    cards.forEach(function(card, i) {
+                    cards.forEach(function (card, i) {
                         var rect = card.getBoundingClientRect();
                         var cardCenter = rect.left + rect.width / 2;
                         var diff = Math.abs(cardCenter - center);
@@ -3256,12 +3266,12 @@
                 ventureStack.addEventListener('scroll', updateVenturePagination, { passive: true });
                 window.addEventListener('resize', updateVenturePagination, { passive: true });
 
-                btnPrev.addEventListener('click', function() {
+                btnPrev.addEventListener('click', function () {
                     var cardWidth = ventureStack.querySelector('.v-card').offsetWidth;
                     ventureStack.scrollBy({ left: -cardWidth, behavior: 'smooth' });
                 });
 
-                btnNext.addEventListener('click', function() {
+                btnNext.addEventListener('click', function () {
                     var cardWidth = ventureStack.querySelector('.v-card').offsetWidth;
                     ventureStack.scrollBy({ left: cardWidth, behavior: 'smooth' });
                 });
