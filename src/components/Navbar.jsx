@@ -41,6 +41,13 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={`text-sm font-semibold transition ${active ? 'text-white' : 'text-slate-300 hover:text-white'}`}
+              >
+                {item.label}
+              </a>
+            );
+          })}
+        </nav>
+
         <div className="hidden items-center justify-end gap-3 lg:flex">
           <a
             href="#contact"
