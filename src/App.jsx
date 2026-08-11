@@ -17,7 +17,7 @@ function App() {
       });
     }, { threshold: 0.1 });
 
-    const revealElements = document.querySelectorAll('.reveal');
+    const revealElements = document.querySelectorAll('.reveal, .fade-scale');
     revealElements.forEach(el => observer.observe(el));
 
     return () => observer.disconnect();

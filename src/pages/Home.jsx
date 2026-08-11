@@ -107,7 +107,7 @@ const renderIcon = (type) => {
 export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
-      const revealElements = document.querySelectorAll('.reveal');
+      const revealElements = document.querySelectorAll('.reveal, .fade-scale');
       revealElements.forEach((entry) => {
         const rect = entry.getBoundingClientRect();
         if (rect.top < window.innerHeight * 0.9) {
@@ -166,7 +166,7 @@ export default function Home() {
       <main>
         <Hero />
 
-        <section className="section-pad services-section" id="services">
+        <section className="section-pad services-section fade-scale" id="services">
           <div className="wrap">
             <div className="services-header reveal">
               <div className="section-label">SERVICES</div>
@@ -201,9 +201,9 @@ export default function Home() {
 
         <Process />
 
-        <section className="section-pad" id="tech-stack">
+        <section className="section-pad scroll-mt-[112px]" id="case-studies">
           <div className="wrap">
-            <div className="section-label venture-sticky-label">TECH STACK</div>
+            <div className="section-label venture-sticky-label">CASE STUDIES</div>
             <h2 className="reveal" style={{ fontSize: 'clamp(26px,3.4vw,42px)', maxWidth: '700px', marginBottom: '60px' }}>
               Products we build.<br />
               <span style={{ background: 'linear-gradient(135deg,#fff 30%,#9b8aff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Ventures that scale.</span>
