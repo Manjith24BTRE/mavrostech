@@ -6,12 +6,14 @@ const navItems = [
   { label: 'Home', href: '#top' },
   { label: 'Services', href: '#services' },
   { label: 'Process', href: '#process' },
-  { label: 'About Us', href: '#about' },
+  { label: 'Case Studies', href: '#case-studies' },
+  { label: 'Impact', href: '#impact' },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const location = useLocation();
   const activeHash = location.hash || '#top';
 
@@ -25,8 +27,13 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => setIsMounted(true), 40);
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 h-[88px] transition duration-500 ${scrolled ? 'border-b border-white/10 bg-[rgba(5,5,5,0.85)] shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl' : 'border-b border-white/10 bg-[rgba(5,5,5,0.6)] backdrop-blur-xl'}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 h-[88px] transition-all duration-500 ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'} ${scrolled ? 'border-b border-white/10 bg-[rgba(5,5,5,0.85)] shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl' : 'border-b border-white/10 bg-[rgba(5,5,5,0.6)] backdrop-blur-xl'}`}>
       <div className="mx-auto grid h-full max-w-[1400px] grid-cols-[auto_1fr_auto] items-center gap-6 px-6 lg:px-16">
         <a href="#top" className="flex items-center gap-3 transition hover:-translate-y-px">
           <img src="/assets/logo.svg" alt="Mavros logo" className="h-10 w-10 object-contain" />
@@ -40,9 +47,10 @@ export default function Navbar() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-semibold transition ${active ? 'text-white' : 'text-slate-300 hover:text-white'}`}
+                className={`relative text-sm font-semibold transition ${active ? 'text-white' : 'text-slate-300 hover:text-white'}`}
               >
                 {item.label}
+                {active && <span className="absolute -bottom-3 left-1/2 h-0.5 w-8 -translate-x-1/2 rounded-full bg-blue-400/90" />}
               </a>
             );
           })}
@@ -67,7 +75,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      <div className={`lg:hidden overflow-hidden transition-[max-height,opacity] duration-500 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+      <div className={`lg:hidden overflow-hidden transition-[max-height,opacity,transform] duration-500 ${isOpen ? 'max-h-96 opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-3'}`}>
         <div className="space-y-3 border-t border-white/10 bg-[#0b0b0d]/95 px-6 py-5 backdrop-blur-xl">
           {navItems.map((item) => (
             <a
