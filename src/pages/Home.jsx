@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Hero from '../components/Hero';
+import EcosystemSection from '../components/EcosystemSection';
 import Process from '../components/Process';
 import VentureStack from '../components/VentureStack';
 import ImpactGrid from '../components/ImpactGrid';
@@ -165,6 +166,8 @@ export default function Home() {
 
       <main>
         <Hero />
+
+        <EcosystemSection />
 
         <section className="section-pad services-section fade-scale" id="services">
           <div className="wrap">

@@ -2482,3 +2482,40 @@
         gap: 12px;
     }
 }
+
+/* Ecosystem Diagram Keyframe Animations */
+@keyframes pulse-cyan-dot {
+  0%, 100% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 4px #38bdf8) drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 7px #38bdf8) drop-shadow(0 0 15px rgba(56, 189, 248, 0.95));
+    transform: scale(1.15);
+  }
+}
+
+@keyframes pulse-center-glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.06);
+  }
+}
+
+.ecosystem-dot-pulse {
+  animation: pulse-cyan-dot 3.5s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.ecosystem-center-glow {
+  animation: pulse-center-glow 7s ease-in-out infinite;
+  transform-origin: center;
+}
+
