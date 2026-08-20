@@ -327,7 +327,16 @@ export default function Home() {
               <div className="eyebrow" style={{ justifyContent: 'center' }}>LET'S BUILD SOMETHING</div>
               <h2>Got footage that needs a story?</h2>
               <p>Tell us what you're shooting and how much of it there is. We'll show you what MAVROS does with it.</p>
-              <a href="mailto:official@www.mavrostech.in?subject=MAVROS%20enquiry&body=Hi%20MAVROS%20team%2C%0A%0AI%27d%20like%20to%20discuss..." className="btn btn-primary">Email MAVROS</a>
+              <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '24px', flexWrap: 'wrap' }}>
+                <a href="mailto:official@www.mavrostech.in?subject=MAVROS%20enquiry&body=Hi%20MAVROS%20team%2C%0A%0AI%27d%20like%20to%20discuss..." className="btn btn-primary">Email MAVROS</a>
+                <button 
+                  onClick={() => window.dispatchEvent(new Event('open-whatsapp-modal'))} 
+                  className="btn" 
+                  style={{ backgroundColor: 'transparent', color: '#fff', border: '1px solid rgba(255, 255, 255, 0.2)' }}
+                >
+                  💬 WhatsApp Us
+                </button>
+              </div>
             </div>
           </div>
         </section>

@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import WhatsAppIntegration from './components/WhatsAppIntegration'
 
 function App() {
   const location = useLocation();
@@ -45,6 +46,7 @@ function App() {
         <Route path="/projects" element={<Projects />} />
       </Routes>
       <Footer />
+      <WhatsAppIntegration />
     </>
   )
 }
