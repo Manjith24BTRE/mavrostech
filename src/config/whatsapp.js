@@ -1,1 +1,1 @@
-export const WHATSAPP_NUMBER = "916364192452"; // MavrosTech WhatsApp Number
+export const WHATSAPP_NUMBER = "916361492452"; // MavrosTech WhatsApp Number
