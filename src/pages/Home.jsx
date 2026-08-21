@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Hero from '../components/Hero';
+import Collaborators from '../components/Collaborators';
 import EcosystemSection from '../components/EcosystemSection';
 import Process from '../components/Process';
 import VentureStack from '../components/VentureStack';
@@ -166,6 +167,7 @@ export default function Home() {
 
       <main>
         <Hero />
+        <Collaborators />
 
         <EcosystemSection />
 
