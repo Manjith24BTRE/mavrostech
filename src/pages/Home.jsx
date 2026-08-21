@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { MapPin, Phone, ArrowUpRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import Hero from '../components/Hero';
 import Collaborators from '../components/Collaborators';
@@ -339,6 +340,79 @@ export default function Home() {
                   💬 WhatsApp Us
                 </button>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section-pad" id="location">
+          <div className="wrap">
+            <div className="eyebrow" style={{ justifyContent: 'center' }}>LOCATION AND CONTACT</div>
+            <h2 style={{ textAlign: 'center', marginBottom: '48px', fontSize: 'clamp(28px, 4vw, 48px)' }}>Visit MavrosTech.</h2>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px', alignItems: 'stretch' }}>
+              
+              {/* Contact Card */}
+              <div style={{ background: '#09090b', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '24px', padding: '40px', display: 'flex', flexDirection: 'column', gap: '32px' }}>
+                <h3 style={{ fontFamily: 'var(--mono)', fontSize: '12px', letterSpacing: '2px', color: 'rgba(255,255,255,0.4)', margin: 0, textTransform: 'uppercase' }}>Contact Information</h3>
+                
+                <div style={{ display: 'flex', gap: '16px' }}>
+                  <MapPin size={24} style={{ color: 'rgba(255,255,255,0.4)', flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <h4 style={{ fontSize: '14px', fontWeight: 'bold', color: '#fff', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>Address</h4>
+                    <p style={{ color: 'var(--muted)', fontSize: '15px', lineHeight: '1.6', margin: 0 }}>
+                      House 5, 4th Cross Road,<br/>
+                      Chikkabasavanapura, Krishnarajapuram,<br/>
+                      Bengaluru, Karnataka, 560036
+                    </p>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', gap: '16px' }}>
+                  <Phone size={24} style={{ color: 'rgba(255,255,255,0.4)', flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <h4 style={{ fontSize: '14px', fontWeight: 'bold', color: '#fff', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>Phone</h4>
+                    <p style={{ color: 'var(--muted)', fontSize: '15px', lineHeight: '1.6', margin: 0 }}>
+                      +91 63614 92452
+                    </p>
+                  </div>
+                </div>
+
+                <div style={{ marginTop: 'auto', paddingTop: '16px' }}>
+                  <button 
+                    onClick={() => window.open('https://maps.app.goo.gl/vEg9Fe2kHMjkfYuHA', '_blank')}
+                    className="btn btn-primary" 
+                    style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 24px', borderRadius: '12px', fontSize: '14px', fontWeight: 'bold' }}
+                  >
+                    Get Directions <ArrowUpRight size={18} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Map Card */}
+              <div style={{ position: 'relative', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.08)', minHeight: '350px', background: '#111' }}>
+                <iframe
+                  src="https://maps.google.com/maps?q=House%205,%204th%20Cross%20Road,%20Chikkabasavanapura,%20Krishnarajapuram,%20Bengaluru,%20Karnataka,%20560036&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, minHeight: '100%', display: 'block', position: 'absolute', top: 0, left: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="MavrosTech Location Map"
+                ></iframe>
+                
+                <div style={{ position: 'absolute', top: '16px', right: '16px' }}>
+                  <button 
+                    onClick={() => window.open('https://maps.app.goo.gl/vEg9Fe2kHMjkfYuHA', '_blank')}
+                    style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', padding: '8px 16px', borderRadius: '20px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', transition: 'background 0.2s' }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.9)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.7)'}
+                  >
+                    Open in Maps <ArrowUpRight size={16} />
+                  </button>
+                </div>
+              </div>
+              
             </div>
           </div>
         </section>

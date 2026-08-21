@@ -159,6 +159,15 @@ export default function VentureStack() {
               </svg>
             </button>
 
+            <button 
+              onClick={closeModal} 
+              style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', padding: 0, marginBottom: '24px', transition: 'color 0.2s', width: 'max-content' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#fff'}
+              onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}
+            >
+              &larr; Back to Case Studies
+            </button>
+
             <div className="v-modal-header">
               <span className="v-modal-subtitle">{selectedDetails.subtitle}</span>
               <h3 className="v-modal-title">{selectedDetails.title}</h3>
@@ -225,3 +234,4 @@ export default function VentureStack() {
     </>
   );
 }
+
