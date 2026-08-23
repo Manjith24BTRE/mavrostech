@@ -18,6 +18,17 @@ export default function Navbar() {
   const activeHash = location.hash || '#top';
 
   useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 24);
     };
@@ -33,7 +44,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 h-[88px] transition-all duration-500 ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'} ${scrolled ? 'border-b border-white/10 bg-[rgba(5,5,5,0.85)] shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl' : 'border-b border-white/10 bg-[rgba(5,5,5,0.6)] backdrop-blur-xl'}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 h-[72px] lg:h-[88px] transition-all duration-500 ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'} ${scrolled ? 'border-b border-white/10 bg-[rgba(5,5,5,0.85)] shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl' : 'border-b border-white/10 bg-[rgba(5,5,5,0.6)] backdrop-blur-xl'}`}>
       <div className="mx-auto grid h-full max-w-[1400px] grid-cols-[auto_1fr_auto] items-center gap-6 px-6 lg:px-16">
         <a href="#top" className="flex items-center gap-3 transition hover:-translate-y-px">
           <img src="/assets/logo.svg" alt="Mavros logo" className="h-10 w-10 object-contain" />
@@ -67,33 +78,35 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 p-2 text-white transition hover:bg-white/10 lg:hidden"
+          className="inline-flex h-[48px] w-[120px] items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10 lg:hidden"
           onClick={() => setIsOpen((value) => !value)}
           aria-label="Toggle mobile menu"
         >
-          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
-      <div className={`lg:hidden overflow-hidden transition-[max-height,opacity,transform] duration-500 ${isOpen ? 'max-h-96 opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-3'}`}>
-        <div className="space-y-3 border-t border-white/10 bg-[#0b0b0d]/95 px-6 py-5 backdrop-blur-xl">
+      <div className={`fixed inset-x-0 bottom-0 top-[72px] z-40 bg-[#050505] lg:hidden overflow-y-auto transition-all duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div className="flex flex-col space-y-4 border-t border-white/10 px-6 py-8">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="block rounded-3xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              className="block rounded-3xl border border-white/10 bg-white/5 px-5 py-3.5 text-center text-sm font-semibold text-white transition hover:bg-white/10"
               onClick={() => setIsOpen(false)}
             >
               {item.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="block rounded-full border border-white/10 bg-white/5 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10"
-            onClick={() => setIsOpen(false)}
-          >
-            Let&apos;s Talk
-          </a>
+          <div className="pt-2">
+            <a
+              href="#contact"
+              className="block rounded-full border border-white/10 bg-white/5 px-5 py-3.5 text-center text-sm font-semibold text-white transition hover:bg-white/10"
+              onClick={() => setIsOpen(false)}
+            >
+              Let&apos;s Talk
+            </a>
+          </div>
         </div>
       </div>
     </header>
