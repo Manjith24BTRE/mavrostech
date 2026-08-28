@@ -433,13 +433,56 @@
             }
         }
 
+        .services-pagination {
+            display: none;
+        }
+
         @media (max-width: 760px) {
             .services-header {
                 padding: 0 10px;
             }
 
             .services-grid {
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: none; /* Firefox */
+                padding-bottom: 16px;
+                gap: 16px;
+            }
+
+            .services-grid::-webkit-scrollbar {
+                display: none; /* Safari and Chrome */
+            }
+
+            .service-card {
+                flex: 0 0 85%;
+                scroll-snap-align: start;
+                min-width: 0;
+            }
+
+            .services-pagination {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                margin-top: 12px;
+            }
+
+            .pagination-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                transition: background 0.3s ease, transform 0.3s ease;
+            }
+
+            .pagination-dot.active {
+                background: rgba(255, 255, 255, 0.8);
+                transform: scale(1.2);
             }
         }
 
@@ -561,11 +604,20 @@
 
         .mobile-toggle {
             display: none;
-            background: none;
-            border: none;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             color: var(--text);
-            font-size: 22px;
+            font-size: 24px;
             cursor: pointer;
+            padding: 0;
+            margin: 0;
+            line-height: 1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         /* ===== hero ===== */
@@ -1346,6 +1398,7 @@
                 padding-bottom: 20px;
                 display: flex;
                 flex-direction: row;
+                align-items: stretch;
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
                 gap: 20px;
@@ -1368,15 +1421,15 @@
                 scroll-snap-align: center;
                 flex: 0 0 88%;
                 max-width: 88%;
+                height: auto;
                 z-index: 1 !important;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
             }
 
             .v-card-2 {
-                /* ensure the second card matches layout */
-                justify-content: center;
-                align-items: center;
-                min-height: auto;
+                /* Let it inherit flex stretch */
+                justify-content: flex-start;
+                align-items: flex-start;
             }
 
             .venture-controls {
@@ -2084,7 +2137,58 @@
             }
 
             .impact-grid {
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 16px;
+                padding-bottom: 24px;
+                margin-top: 30px;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+                padding-right: 15%; /* Allow next card to peek */
+            }
+            .impact-grid::-webkit-scrollbar {
+                display: none;
+            }
+
+            .impact-card {
+                flex: 0 0 85%;
+                max-width: 85%;
+                scroll-snap-align: center;
+                background: rgba(255, 255, 255, 0.04);
+                border-color: rgba(255, 255, 255, 0.12);
+                opacity: 0.5 !important; /* dimmed by default */
+                transform: scale(0.95) !important;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: stretch;
+                transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
+            }
+
+            .impact-card.mobile-active {
+                opacity: 1 !important;
+                transform: scale(1) !important;
+                border-color: rgba(124, 110, 242, 0.4) !important;
+                background: rgba(255, 255, 255, 0.06);
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(124, 110, 242, 0.1);
+            }
+
+            /* Better contrast for text on mobile */
+            .impact-card h3 {
+                color: #ffffff;
+                text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+            }
+
+            .impact-card .impact-row .k {
+                color: #4df0c0;
+                font-weight: 600;
+                opacity: 1;
+            }
+
+            .impact-card .impact-row p {
+                color: #e8e8e8;
             }
 
             .stage-tabs {
@@ -2150,7 +2254,7 @@
             }
 
             .mobile-toggle {
-                display: block;
+                display: flex;
             }
 
             .section-pad {
@@ -2746,3 +2850,126 @@
     }
 }
 
+
+/* ===== Desktop Services Enhancements ===== */
+@media (min-width: 901px) {
+    .services-grid {
+        position: relative;
+    }
+
+    /* Interactive Cursor Spotlight */
+    .services-grid::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        background: radial-gradient(
+            600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(255, 255, 255, 0.04),
+            transparent 40%
+        );
+        z-index: 0;
+        transition: opacity 0.3s ease;
+        opacity: 0;
+    }
+
+    .services-grid:hover::before {
+        opacity: 1;
+    }
+
+    /* Ambient Background behind cards */
+    .services-ambient-bg {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        width: 80%;
+        height: 60%;
+        transform: translateX(-50%);
+        background: 
+            radial-gradient(circle at 20% 50%, rgba(124, 110, 242, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 80% 50%, rgba(31, 182, 255, 0.08) 0%, transparent 50%);
+        filter: blur(80px);
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .service-card {
+        will-change: transform;
+        z-index: 1;
+        transition: transform 0.1s linear, box-shadow 0.3s ease, border-color 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+    }
+
+    .service-card:hover {
+        border-color: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.08);
+        z-index: 2;
+    }
+
+    .services-grid:hover .service-card:not(:hover) {
+        opacity: 0.5;
+        border-color: rgba(255, 255, 255, 0.04);
+        background: rgba(255, 255, 255, 0.01);
+    }
+
+    .service-card h3 {
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    
+    .service-card:hover h3 {
+        color: #ffffff;
+        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .service-card .service-highlights li {
+        transition: opacity 0.3s ease;
+        opacity: 0.7;
+    }
+
+    .service-card:hover .service-highlights li {
+        opacity: 1;
+    }
+
+    .service-card-cta .arrow {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .service-card-cta .arrow {
+        transform: translateX(4px);
+    }
+}
+
+/* ===== Desktop Process Hover Enhancement ===== */
+@media (min-width: 901px) {
+    .stage-tab {
+        transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .stage-tab:hover {
+        background: rgba(255, 255, 255, 0.08);
+    }
+    
+    .stage-panels-container {
+        display: grid;
+    }
+
+    .stage-panel {
+        display: block !important;
+        grid-area: 1 / 1;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    }
+
+    .stage-panel.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+}

@@ -23,7 +23,7 @@ export default function Footer() {
                     </div>
                     <div className="col">
                         <div className="col-h">Contact</div>
-                        <a href="mailto:official@www.mavrostech.in">official@www.mavrostech.in</a>
+                        <a href="mailto:official@mavrostech.in">official@mavrostech.in</a>
                     </div>
                 </div>
                 <div className="foot-bottom">

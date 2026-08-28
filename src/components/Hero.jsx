@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform, useInView, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, Sparkles, Layers, Zap, ShieldCheck } from 'lucide-react';
 import BackgroundEffects from './BackgroundEffects';
@@ -34,6 +34,15 @@ const trustSignals = [
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile, { passive: true });
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const heroRef = useRef(null);
   const isInView = useInView(heroRef, { once: true, amount: 0.25 });
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
@@ -55,7 +64,7 @@ export default function Hero() {
   const backgroundY = useSpring(useTransform(pointerY, [-1, 1], [-6, 6]), springConfig);
 
   const handlePointerMove = (event) => {
-    if (shouldReduceMotion) return;
+    if (shouldReduceMotion || isMobile) return;
     const rect = event.currentTarget.getBoundingClientRect();
     const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
     const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
@@ -64,7 +73,7 @@ export default function Hero() {
   };
 
   const resetPointer = () => {
-    if (shouldReduceMotion) return;
+    if (shouldReduceMotion || isMobile) return;
     pointerX.set(0);
     pointerY.set(0);
   };
@@ -75,7 +84,7 @@ export default function Hero() {
       id="top"
       onPointerMove={handlePointerMove}
       onPointerLeave={resetPointer}
-      className="relative min-h-[calc(100vh-88px)] overflow-hidden bg-[#05070B] text-white pt-[120px] pb-16"
+      className="relative min-h-[100vh] overflow-hidden bg-[#05070B] text-white pt-[120px] pb-16"
     >
       <motion.div
         className="pointer-events-none absolute inset-0"
@@ -84,7 +93,7 @@ export default function Hero() {
         <BackgroundEffects />
       </motion.div>
 
-      <div className="relative z-10 mx-auto grid min-h-[calc(100vh-88px)] max-w-[1400px] grid-cols-1 gap-16 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:px-16">
+      <div className="relative z-10 mx-auto grid min-h-[100vh] max-w-[1400px] grid-cols-1 gap-16 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:px-16">
         <motion.div
           className="space-y-10"
           style={shouldReduceMotion ? undefined : { x: headlineX, y: headlineYMouse }}
@@ -225,7 +234,7 @@ export default function Hero() {
           >
             <motion.div
               className="absolute inset-0"
-              animate={shouldReduceMotion ? undefined : { rotate: 360 }}
+              animate={(shouldReduceMotion || isMobile) ? undefined : { rotate: 360 }}
               transition={{ duration: 42, repeat: Infinity, ease: 'linear' }}
             >
               <svg viewBox="0 0 600 600" className="h-full w-full">
@@ -236,7 +245,7 @@ export default function Hero() {
 
             <motion.div
               className="absolute inset-0"
-              animate={shouldReduceMotion ? undefined : { rotate: -360 }}
+              animate={(shouldReduceMotion || isMobile) ? undefined : { rotate: -360 }}
               transition={{ duration: 52, repeat: Infinity, ease: 'linear' }}
             >
               <svg viewBox="0 0 600 600" className="h-full w-full">

@@ -141,7 +141,7 @@ export default function Home() {
                         "alternateName": ["Mavros", "Mavros Tech IN", "Mavros.in", "Mavros AI"],
                         "url": "https://www.mavrostech.in",
                         "logo": "https://www.mavrostech.in/assets/logo.svg",
-                        "email": "official@www.mavrostech.in",
+                        "email": "official@mavrostech.in",
                         "telephone": "+91-6361492452",
                         "address": {
                             "@type": "PostalAddress",
@@ -328,7 +328,7 @@ export default function Home() {
                             <h2>Got footage that needs a story?</h2>
                             <p>Tell us what you're shooting and how much of it there is. We'll show you what MAVROS does with it.</p>
                             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '24px', flexWrap: 'wrap' }}>
-                                <a href="mailto:official@www.mavrostech.in?subject=MAVROS%20enquiry&body=Hi%20MAVROS%20team%2C%0A%0AI%27d%20like%20to%20discuss..." className="btn btn-primary">Email MAVROS</a>
+                                <a href="mailto:official@mavrostech.in" className="btn btn-primary">Email MAVROS</a>
                                 <button 
                                   onClick={() => window.dispatchEvent(new Event('open-whatsapp-modal'))} 
                                   className="btn" 

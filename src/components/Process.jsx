@@ -34,7 +34,15 @@ const stages = [
 export default function Process() {
   const [activeTab, setActiveTab] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const timerRef = useRef(null);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth > 900);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop, { passive: true });
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -58,6 +66,13 @@ export default function Process() {
     setActiveTab(index);
   };
 
+  const handleMouseEnter = (index) => {
+    setIsPaused(true);
+    if (isDesktop) {
+      setActiveTab(index);
+    }
+  };
+
   return (
     <section className="section-pad" id="process">
       <div className="wrap">
@@ -73,7 +88,7 @@ export default function Process() {
                 key={idx}
                 className={`stage-tab ${activeTab === idx ? 'active' : ''}`}
                 onClick={() => handleTabClick(idx)}
-                onMouseEnter={() => setIsPaused(true)}
+                onMouseEnter={() => handleMouseEnter(idx)}
                 onMouseLeave={() => setIsPaused(false)}
                 style={{ cursor: 'pointer' }}
               >
@@ -83,29 +98,31 @@ export default function Process() {
               </div>
             ))}
           </div>
-          {stages.map((stage, idx) => (
-            <div
-              key={idx}
-              className={`stage-panel ${activeTab === idx ? 'active' : ''}`}
-            >
-              <span className="tag">{stage.tag}</span>
-              <h3
-                style={{
-                  margin: '0 0 14px',
-                  fontSize: '1.45rem',
-                  fontWeight: 800,
-                  letterSpacing: '-0.02em',
-                  background: 'linear-gradient(135deg,#ffffff 0%, rgba(255,255,255,0.92) 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}
+          <div className="stage-panels-container">
+            {stages.map((stage, idx) => (
+              <div
+                key={idx}
+                className={`stage-panel ${activeTab === idx ? 'active' : ''}`}
               >
-                {stage.title}
-              </h3>
-              <p>{stage.desc}</p>
-            </div>
-          ))}
+                <span className="tag">{stage.tag}</span>
+                <h3
+                  style={{
+                    margin: '0 0 14px',
+                    fontSize: '1.45rem',
+                    fontWeight: 800,
+                    letterSpacing: '-0.02em',
+                    background: 'linear-gradient(135deg,#ffffff 0%, rgba(255,255,255,0.92) 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }}
+                >
+                  {stage.title}
+                </h3>
+                <p>{stage.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

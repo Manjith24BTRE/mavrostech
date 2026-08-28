@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -7,8 +7,18 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function ImpactGrid() {
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 900);
+    checkMobile();
+    window.addEventListener('resize', checkMobile, { passive: true });
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useGSAP(() => {
+    if (isMobile) return; // Skip GSAP on mobile to allow native horizontal scroll
+
     const impactCards = gsap.utils.toArray('.impact-card');
     
     impactCards.forEach((card, idx) => {
@@ -40,9 +50,31 @@ export default function ImpactGrid() {
         }
       );
     });
-  }, { scope: containerRef });
+  }, { scope: containerRef, dependencies: [isMobile] });
+
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const cards = containerRef.current.querySelectorAll('.impact-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('mobile-active');
+        } else {
+          entry.target.classList.remove('mobile-active');
+        }
+      });
+    }, {
+      root: containerRef.current,
+      threshold: 0.6 // Trigger when 60% of card is visible
+    });
+
+    cards.forEach(card => observer.observe(card));
+    return () => observer.disconnect();
+  }, [isMobile]);
 
   const handlePointerMove = (e, idx) => {
+    if (isMobile) return;
     const card = e.currentTarget;
     const glow = card.querySelector('.impact-glow');
     if (!glow) return;
